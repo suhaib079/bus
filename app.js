@@ -11,7 +11,15 @@ function Pics(picname, source) {
     picsname.push(picsname);
 
 }
+
 Pics.prototype.allpic = [];
+// Get "myPics" from localstorage
+var storaged = localStorage.getItem("myPics");
+// In case of data being found stored in localstorage
+if (storaged != null) {
+    Pics.prototype.allpic = JSON.parse( storaged );
+}
+
 new Pics('bag', 'img/bag.jpg');
 new Pics('banana', 'img/banana.jpg');
 new Pics('bathroom', 'img/bathroom.jpg');
@@ -84,6 +92,9 @@ maxround.addEventListener('submit', setmaxround);
 final.addEventListener('click', showresults);
 
 function userclick(event) {
+
+    // Store the data in localstorage with name "myPics"
+    localStorage.setItem("myPics", JSON.stringify(Pics.prototype.allpic));
 
     if (attempttry < attempt) {
         if (event.target.id === 'leftpic') {
