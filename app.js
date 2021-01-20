@@ -7,8 +7,8 @@ function Pics(picname, source) {
     this.vote = 0;
     this.show = 0;
     Pics.prototype.allpic.push(this);
-    var picsname = [];
-    picsname.push(picsname);
+    // var picsname = [];
+    // picsname.push(picsname);
 
 }
 Pics.prototype.allpic = [];
@@ -51,7 +51,9 @@ var final = document.getElementById('final')
 var leftpicindex;
 var middlepicindex;
 var rightpicindex;
-
+var firstpicleft = -1 ;
+var firstpicmiddle = -1;
+var firstpicright = -1;
 var attempt = 25;
 var attempttry = 0;
 
@@ -61,13 +63,27 @@ var attempttry = 0;
 //  console.log(pics.prototype.allpic);
 
 function renderThreePic() {
-    leftpicindex = randomthreepic();
-    do {
+    var notallowedpic = [firstpicleft,firstpicmiddle,firstpicright];
+    do{
+        leftpicindex = randomthreepic();
+
+    } while(notallowedpic.includes(leftpicindex));
+    firstpicleft = leftpicindex;
+    notallowedpic.push(leftpicindex)
+    do{
         rightpicindex = randomthreepic();
+    } while(notallowedpic.includes(rightpicindex));
+    notallowedpic.push(rightpicindex);
+    do{
         middlepicindex = randomthreepic();
-    } while (leftpicindex === rightpicindex || leftpicindex === middlepicindex || middlepicindex === rightpicindex);
-    console.log(Pics.prototype.allpic[leftpicindex].source)
-    // Left
+    }while(notallowedpic.includes(middlepicindex))
+    
+    // do {
+    //     rightpicindex = randomthreepic();
+    //     middlepicindex = randomthreepic();
+    // } while (leftpicindex === rightpicindex || leftpicindex === middlepicindex || middlepicindex === rightpicindex);
+    // console.log(Pics.prototype.allpic[leftpicindex].source)
+    // // Left
     leftpic.src = Pics.prototype.allpic[leftpicindex].source;
     Pics.prototype.allpic[leftpicindex].show++;
     // Middle
