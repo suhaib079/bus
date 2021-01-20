@@ -51,7 +51,7 @@ var final = document.getElementById('final')
 var leftpicindex;
 var middlepicindex;
 var rightpicindex;
-var firstpicleft = -1 ;
+var firstpicleft = -1;
 var firstpicmiddle = -1;
 var firstpicright = -1;
 var attempt = 25;
@@ -63,21 +63,21 @@ var attempttry = 0;
 //  console.log(pics.prototype.allpic);
 
 function renderThreePic() {
-    var notallowedpic = [firstpicleft,firstpicmiddle,firstpicright];
-    do{
+    var notallowedpic = [firstpicleft, firstpicmiddle, firstpicright];
+    do {
         leftpicindex = randomthreepic();
 
-    } while(notallowedpic.includes(leftpicindex));
+    } while (notallowedpic.includes(leftpicindex));
     firstpicleft = leftpicindex;
     notallowedpic.push(leftpicindex)
-    do{
+    do {
         rightpicindex = randomthreepic();
-    } while(notallowedpic.includes(rightpicindex));
+    } while (notallowedpic.includes(rightpicindex));
     notallowedpic.push(rightpicindex);
-    do{
+    do {
         middlepicindex = randomthreepic();
-    }while(notallowedpic.includes(middlepicindex))
-    
+    } while (notallowedpic.includes(middlepicindex))
+
     // do {
     //     rightpicindex = randomthreepic();
     //     middlepicindex = randomthreepic();
