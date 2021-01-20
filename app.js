@@ -59,7 +59,7 @@ var final = document.getElementById('final')
 var leftpicindex;
 var middlepicindex;
 var rightpicindex;
-var firstpicleft = -1 ;
+var firstpicleft = -1;
 var firstpicmiddle = -1;
 var firstpicright = -1;
 var attempt = 25;
@@ -71,21 +71,21 @@ var attempttry = 0;
 //  console.log(pics.prototype.allpic);
 
 function renderThreePic() {
-    var notallowedpic = [firstpicleft,firstpicmiddle,firstpicright];
-    do{
+    var notallowedpic = [firstpicleft, firstpicmiddle, firstpicright];
+    do {
         leftpicindex = randomthreepic();
 
-    } while(notallowedpic.includes(leftpicindex));
+    } while (notallowedpic.includes(leftpicindex));
     firstpicleft = leftpicindex;
     notallowedpic.push(leftpicindex)
-    do{
+    do {
         rightpicindex = randomthreepic();
-    } while(notallowedpic.includes(rightpicindex));
+    } while (notallowedpic.includes(rightpicindex));
     notallowedpic.push(rightpicindex);
-    do{
+    do {
         middlepicindex = randomthreepic();
-    }while(notallowedpic.includes(middlepicindex))
-    
+    } while (notallowedpic.includes(middlepicindex))
+
     // do {
     //     rightpicindex = randomthreepic();
     //     middlepicindex = randomthreepic();
@@ -136,6 +136,7 @@ function userclick(event) {
 }
 function showresults() {
     var list = document.getElementById('ur-choice');
+    list.innerHTML = "";
     var endlist;
     for (var i = 0; i < Pics.prototype.allpic.length; i++) {
         endlist = document.createElement('li');
@@ -152,6 +153,7 @@ function setmaxround(event) {
 
 // Get all chart values
 var votes = [];
+var shows = [];
 var picsname = [];
 for (var i = 0; i < 20; i++) {
     picsname.push(Pics.prototype.allpic[i].picname);
@@ -160,6 +162,7 @@ for (var i = 0; i < 20; i++) {
 function showChart() {
     for (var i = 0; i < 20; i++) {
         votes.push(Pics.prototype.allpic[i].vote);
+        shows.push(Pics.prototype.allpic[i].show);
     }
     console.log(votes);
 
@@ -174,6 +177,13 @@ function showChart() {
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: votes,
+                label: 'Votes',
+            },
+            {
+                backgroundColor: 'orange',
+                borderColor: 'orange',
+                data: shows,
+                label: 'Shows',
             }]
         },
 
