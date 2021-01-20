@@ -125,6 +125,7 @@ function userclick(event) {
 }
 function showresults() {
     var list = document.getElementById('ur-choice');
+    list.innerHTML = "";
     var endlist;
     for (var i = 0; i < Pics.prototype.allpic.length; i++) {
         endlist = document.createElement('li');
@@ -141,6 +142,7 @@ function setmaxround(event) {
 
 // Get all chart values
 var votes = [];
+var shows = [];
 var picsname = [];
 for (var i = 0; i < 20; i++) {
     picsname.push(Pics.prototype.allpic[i].picname);
@@ -149,6 +151,7 @@ for (var i = 0; i < 20; i++) {
 function showChart() {
     for (var i = 0; i < 20; i++) {
         votes.push(Pics.prototype.allpic[i].vote);
+        shows.push(Pics.prototype.allpic[i].show);
     }
     console.log(votes);
 
@@ -163,6 +166,13 @@ function showChart() {
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: votes,
+                label: 'Votes',
+            },
+            {
+                backgroundColor: 'orange',
+                borderColor: 'orange',
+                data: shows,
+                label: 'Shows',
             }]
         },
 
